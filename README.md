@@ -16,10 +16,9 @@ Studier is a minimalist, browser-based productivity app that gamifies studying. 
 - 📱 Mobile + desktop responsive
 
 ## Getting Started
-
-1. Open `index.html` in your web browser
-2. Start adding tasks and earning XP!
-3. Your progress is automatically saved locally in your browser
+1. Start adding tasks and earning XP!
+2. Your progress is automatically saved locally in your browser
+3. Enjoy a reimagined way of productivity!
 
 ## XP System
 
