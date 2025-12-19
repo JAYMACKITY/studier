@@ -1,11 +1,20 @@
 // Vercel Serverless Function for verifying Stripe checkout sessions
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 module.exports = async (req, res) => {
   // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
+
+  // Check if Stripe secret key is configured
+  if (!process.env.STRIPE_SECRET_KEY) {
+    console.error('STRIPE_SECRET_KEY environment variable is not set');
+    return res.status(500).json({ 
+      error: 'Payment server configuration error. Please contact support at hello@studier.me' 
+    });
+  }
+
+  const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
   try {
     const { sessionId } = req.body;
