@@ -29,9 +29,6 @@ function initStripe() {
 // Create checkout session for premium subscription
 async function createCheckoutSession(userEmail, userId) {
     try {
-        // In production, this should call your backend API
-        // For now, we'll use a placeholder that you'll need to implement
-        
         const response = await fetch(`${API_BASE_URL}/create-checkout-session`, {
             method: 'POST',
             headers: {
@@ -48,16 +45,25 @@ async function createCheckoutSession(userEmail, userId) {
         });
 
         if (!response.ok) {
-            throw new Error('Failed to create checkout session');
+            // Try to get error message from response
+            let errorMessage = 'Failed to create checkout session';
+            try {
+                const errorData = await response.json();
+                errorMessage = errorData.error || errorMessage;
+            } catch (e) {
+                errorMessage = `Server error: ${response.status} ${response.statusText}`;
+            }
+            throw new Error(errorMessage);
         }
 
         const session = await response.json();
         return session;
     } catch (error) {
         console.error('Error creating checkout session:', error);
-        // Fallback: For development/testing without backend
-        // You can use Stripe's test mode directly
-        alert('Payment processing is being set up. Please contact support at hello@studier.me for manual subscription setup.');
+        // Re-throw with more context
+        if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+            throw new Error('Network error: Unable to reach payment server. Please check your connection and try again.');
+        }
         throw error;
     }
 }
@@ -83,10 +89,9 @@ async function redirectToCheckout(userEmail, userId) {
         }
     } catch (error) {
         console.error('Error redirecting to checkout:', error);
-        // For development: Show instructions
-        if (error.message.includes('Failed to create checkout session')) {
-            alert('Backend API endpoint not configured. Please set up your backend API endpoint in stripe.js or contact support.');
-        }
+        // Show the actual error message to help debug
+        const errorMsg = error.message || 'Unknown error occurred';
+        alert(`Payment Error: ${errorMsg}\n\nIf this persists, please contact support at hello@studier.me`);
     }
 }
 
