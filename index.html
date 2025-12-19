@@ -3,137 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studier - Level up your study game, one task at a time 🎮</title>
+    <title>Studier - Level up your study game</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Header -->
-        <header class="header">
-            <div class="header-content">
-                <h1 class="app-title">Studier</h1>
-                <p class="tagline">Level up your study game, one task at a time 🎮</p>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html"><img src="logo.svg" alt="Studier" class="logo"></a>
             </div>
-            <div class="header-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                    <span class="theme-icon">🌙</span>
-                </button>
+            <div class="nav-links">
+                <a href="features.html">Features</a>
+                <a href="about.html">About</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="login.html" class="nav-link-btn">Log In</a>
+                <a href="signup.html" class="nav-link-btn primary">Start Free Trial</a>
             </div>
-        </header>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
 
-        <!-- Stats Bar -->
-        <div class="stats-bar">
-            <div class="stat-card">
-                <div class="stat-label">Level</div>
-                <div class="stat-value" id="level">1</div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1 class="hero-title">Level up your study game, one task at a time 🎮</h1>
+            <p class="hero-subtitle">Gamify your productivity. Track your progress. Build better habits. All in one beautiful app.</p>
+            <div class="hero-cta">
+                <a href="signup.html" class="btn btn-primary btn-large">Start 7-Day Free Trial</a>
+                <a href="features.html" class="btn btn-secondary btn-large">Learn More</a>
             </div>
-            <div class="stat-card">
-                <div class="stat-label">XP</div>
-                <div class="stat-value" id="totalXP">0</div>
+            <p class="hero-pricing">Just $4.50/month after trial • Cancel anytime</p>
+        </div>
+    </section>
+
+    <!-- Features Preview -->
+    <section class="features-preview">
+        <div class="container">
+            <h2 class="section-heading">Why Studier?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Gamified Tasks</h3>
+                    <p>Turn your to-do list into a game. Earn XP, level up, and unlock achievements as you complete tasks.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔥</div>
+                    <h3>Streak Tracking</h3>
+                    <p>Build consistency with daily streaks. Watch your progress grow day by day.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Achievements & Badges</h3>
+                    <p>Unlock badges and celebrate milestones as you reach new levels of productivity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Progress Dashboard</h3>
+                    <p>Visualize your progress with detailed stats, XP tracking, and completion rates.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Daily Quests</h3>
+                    <p>Complete daily challenges to earn bonus XP and stay motivated.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌙</div>
+                    <h3>Dark Mode</h3>
+                    <p>Study comfortably day or night with beautiful light and dark themes.</p>
+                </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-label">Streak</div>
-                <div class="stat-value" id="streak">0</div>
+            <div class="features-cta">
+                <a href="features.html" class="btn btn-secondary">See All Features</a>
             </div>
         </div>
+    </section>
 
-        <!-- XP Progress Bar -->
-        <div class="xp-progress-container">
-            <div class="xp-progress-label">
-                <span>XP to Next Level</span>
-                <span id="xpProgressText">0 / 100</span>
-            </div>
-            <div class="xp-progress-bar">
-                <div class="xp-progress-fill" id="xpProgressFill"></div>
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2 class="section-heading">Simple, Transparent Pricing</h2>
+            <div class="pricing-grid">
+                <!-- Free Tier -->
+                <div class="pricing-card free-tier">
+                    <div class="pricing-badge free">Free</div>
+                    <div class="pricing-price">
+                        <span class="price-amount">$0</span>
+                    </div>
+                    <p class="pricing-description">Perfect for getting started</p>
+                    <ul class="pricing-features">
+                        <li>✓ Unlimited tasks</li>
+                        <li>✓ XP & leveling system</li>
+                        <li>✓ Streak tracking</li>
+                        <li>✓ Daily quests</li>
+                        <li>✓ Achievements & badges</li>
+                        <li>✓ Progress dashboard</li>
+                        <li>✓ Dark mode</li>
+                    </ul>
+                    <a href="signup.html" class="btn btn-secondary btn-large">Get Started Free</a>
+                </div>
+
+                <!-- Premium Tier -->
+                <div class="pricing-card premium-tier">
+                    <div class="pricing-badge">7-Day Free Trial</div>
+                    <div class="pricing-price">
+                        <span class="price-amount">$4.50</span>
+                        <span class="price-period">/month</span>
+                    </div>
+                    <p class="pricing-description">Everything you need to level up your productivity</p>
+                    <ul class="pricing-features">
+                        <li>✓ Everything in Free</li>
+                        <li>✓ Cross-device sync</li>
+                        <li>✓ Priority support</li>
+                        <li>✓ Advanced analytics</li>
+                        <li>✓ Export data</li>
+                    </ul>
+                    <a href="signup.html" class="btn btn-primary btn-large">Start Free Trial</a>
+                    <p class="pricing-note">No credit card required • Cancel anytime</p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Daily Quests -->
-        <div class="quests-container">
-            <h2 class="section-title">Daily Quests</h2>
-            <div class="quests-list" id="questsList">
-                <!-- Quests will be dynamically inserted here -->
-            </div>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Ready to level up?</h2>
+            <p class="cta-subtitle">Join thousands of students who are already using Studier to stay productive.</p>
+            <a href="signup.html" class="btn btn-primary btn-large">Start Your Free Trial</a>
         </div>
+    </section>
 
-        <!-- Task Form -->
-        <div class="task-form-container">
-            <form class="task-form" id="taskForm">
-                <input 
-                    type="text" 
-                    class="task-input" 
-                    id="taskTitle" 
-                    placeholder="Enter task title..." 
-                    required
-                >
-                <textarea 
-                    class="task-description" 
-                    id="taskDescription" 
-                    placeholder="Optional description..."
-                    rows="2"
-                ></textarea>
-                <div class="difficulty-selector">
-                    <label>Difficulty:</label>
-                    <div class="difficulty-options">
-                        <button type="button" class="difficulty-btn active" data-difficulty="easy">
-                            Easy <span class="xp-badge">+10 XP</span>
-                        </button>
-                        <button type="button" class="difficulty-btn" data-difficulty="medium">
-                            Medium <span class="xp-badge">+25 XP</span>
-                        </button>
-                        <button type="button" class="difficulty-btn" data-difficulty="hard">
-                            Hard <span class="xp-badge">+50 XP</span>
-                        </button>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo.svg" alt="Studier" class="footer-logo">
+                    <p>Level up your study game</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="features.html">Features</a>
+                        <a href="pricing.html">Pricing</a>
+                        <a href="about.html">About</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="terms.html">Terms</a>
+                        <a href="privacy.html">Privacy</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="mailto:hello@studier.me">hello@studier.me</a>
+                        <a href="login.html">Log In</a>
+                        <a href="signup.html">Sign Up</a>
                     </div>
                 </div>
-                <button type="submit" class="add-task-btn">Add Task</button>
-            </form>
-        </div>
-
-        <!-- Tasks Container -->
-        <div class="tasks-container">
-            <h2 class="section-title">Your Tasks</h2>
-            <div class="tasks-list" id="tasksList">
-                <!-- Tasks will be dynamically inserted here -->
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Studier. All rights reserved.</p>
             </div>
         </div>
+    </footer>
 
-        <!-- Badges Container -->
-        <div class="badges-container" id="badgesContainer">
-            <h2 class="section-title">Badges</h2>
-            <div class="badges-list" id="badgesList">
-                <!-- Badges will be dynamically inserted here -->
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <a href="terms.html" class="footer-link">Terms & Conditions</a>
-            <span class="footer-separator">•</span>
-            <a href="privacy.html" class="footer-link">Privacy Policy</a>
-        </footer>
-    </div>
-
-    <!-- Badge Modal -->
-    <div class="modal-overlay" id="badgeModal">
-        <div class="modal-content">
-            <button class="modal-close" id="closeModal">&times;</button>
-            <div class="badge-modal-content">
-                <div class="badge-icon-large">🏆</div>
-                <h3 class="badge-title" id="badgeTitle">Badge Earned!</h3>
-                <p class="badge-description" id="badgeDescription"></p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Confetti Container -->
-    <div class="confetti-container" id="confettiContainer"></div>
-
-    <script src="app.js"></script>
+    <script src="navigation.js"></script>
 </body>
 </html>
-
 
