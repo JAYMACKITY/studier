@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studier - Productivity reimagined</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="dashboard.html"><img src="logo.svg" alt="Studier" class="logo"></a>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="settings.html">Settings</a>
+                <a href="index.html" onclick="localStorage.removeItem('studier_user')">Log Out</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="app-title">Studier</h1>
+                <p class="tagline">Level up your study game, one task at a time 🎮</p>
+            </div>
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="stat-label">Level</div>
+                <div class="stat-value" id="level">1</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">XP</div>
+                <div class="stat-value" id="totalXP">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Streak</div>
+                <div class="stat-value" id="streak">0</div>
+            </div>
+        </div>
+
+        <!-- XP Progress Bar -->
+        <div class="xp-progress-container">
+            <div class="xp-progress-label">
+                <span>XP to Next Level</span>
+                <span id="xpProgressText">0 / 100</span>
+            </div>
+            <div class="xp-progress-bar">
+                <div class="xp-progress-fill" id="xpProgressFill"></div>
+            </div>
+        </div>
+
+        <!-- Daily Quests -->
+        <div class="quests-container">
+            <h2 class="section-title">Daily Quests</h2>
+            <div class="quests-list" id="questsList">
+                <!-- Quests will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- Task Form -->
+        <div class="task-form-container">
+            <form class="task-form" id="taskForm">
+                <input 
+                    type="text" 
+                    class="task-input" 
+                    id="taskTitle" 
+                    placeholder="Enter task title..." 
+                    required
+                >
+                <textarea 
+                    class="task-description" 
+                    id="taskDescription" 
+                    placeholder="Optional description..."
+                    rows="2"
+                ></textarea>
+                <div class="difficulty-selector">
+                    <label>Difficulty:</label>
+                    <div class="difficulty-options">
+                        <button type="button" class="difficulty-btn active" data-difficulty="easy">
+                            Easy <span class="xp-badge">+10 XP</span>
+                        </button>
+                        <button type="button" class="difficulty-btn" data-difficulty="medium">
+                            Medium <span class="xp-badge">+25 XP</span>
+                        </button>
+                        <button type="button" class="difficulty-btn" data-difficulty="hard">
+                            Hard <span class="xp-badge">+50 XP</span>
+                        </button>
+                    </div>
+                </div>
+                <button type="submit" class="add-task-btn">Add Task</button>
+            </form>
+        </div>
+
+        <!-- Tasks Container -->
+        <div class="tasks-container">
+            <h2 class="section-title">Your Tasks</h2>
+            <div class="tasks-list" id="tasksList">
+                <!-- Tasks will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- Badges Container -->
+        <div class="badges-container" id="badgesContainer">
+            <h2 class="section-title">Badges</h2>
+            <div class="badges-list" id="badgesList">
+                <!-- Badges will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <a href="terms.html" class="footer-link">Terms & Conditions</a>
+            <span class="footer-separator">•</span>
+            <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        </footer>
+    </div>
+
+    <!-- Badge Modal -->
+    <div class="modal-overlay" id="badgeModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <div class="badge-modal-content">
+                <div class="badge-icon-large">🏆</div>
+                <h3 class="badge-title" id="badgeTitle">Badge Earned!</h3>
+                <p class="badge-description" id="badgeDescription"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <script src="app.js"></script>
+    <script src="navigation.js"></script>
+</body>
+</html>
+
+
