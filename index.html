@@ -125,7 +125,7 @@
                         <li>✓ Advanced analytics</li>
                         <li>✓ Export data</li>
                     </ul>
-                    <a href="signup.html" class="btn btn-primary btn-large">Start Free Trial</a>
+                    <button id="premiumCheckoutBtnIndex" class="btn btn-primary btn-large">Start Free Trial</button>
                     <p class="pricing-note">No credit card required • Cancel anytime</p>
                 </div>
             </div>
@@ -175,7 +175,25 @@
         </div>
     </footer>
 
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="database.js"></script>
+    <script src="stripe.js"></script>
     <script src="navigation.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const premiumBtn = document.getElementById('premiumCheckoutBtnIndex');
+            if (premiumBtn) {
+                premiumBtn.addEventListener('click', function() {
+                    const user = typeof getCurrentUser !== 'undefined' ? getCurrentUser() : null;
+                    if (user && typeof redirectToCheckout !== 'undefined') {
+                        redirectToCheckout(user.email, user.id);
+                    } else {
+                        window.location.href = 'signup.html?plan=premium';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
 

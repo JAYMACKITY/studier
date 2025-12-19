@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - Studier</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html"><img src="logo.svg" alt="Studier" class="logo"></a>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Success Container -->
+    <div class="auth-container">
+        <div class="auth-card">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <div style="font-size: 4rem; margin-bottom: 20px;">✅</div>
+                <h1 class="auth-title">Payment Successful!</h1>
+                <p class="auth-subtitle">Your premium subscription is now active. Enjoy all premium features!</p>
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="dashboard.html" class="btn btn-primary btn-large">Go to Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="database.js"></script>
+    <script src="stripe.js"></script>
+    <script>
+        // Handle checkout success
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof handleCheckoutSuccess !== 'undefined') {
+                handleCheckoutSuccess();
+            } else {
+                // Fallback: Just redirect after a delay
+                setTimeout(function() {
+                    window.location.href = 'dashboard.html';
+                }, 3000);
+            }
+        });
+    </script>
+    <script src="navigation.js"></script>
+</body>
+</html>
+

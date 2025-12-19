@@ -210,8 +210,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitBtn.textContent = 'Creating account...';
 
                 try {
-                    // Determine plan (check if premium trial was selected)
-                    const plan = 'free'; // Default to free, can be changed based on UI
+                    // Determine plan (check URL params or form selection)
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const planParam = urlParams.get('plan');
+                    const planRadio = document.querySelector('input[name="plan"]:checked');
+                    const plan = planParam || (planRadio ? planRadio.value : 'free');
                     
                     // Create user
                     const user = createUser({
@@ -233,8 +236,13 @@ document.addEventListener('DOMContentLoaded', function() {
                         provider: user.provider
                     }));
                     
-                    // Redirect to dashboard
-                    window.location.href = 'dashboard.html';
+                    // If premium plan selected, redirect to Stripe checkout
+                    if (plan === 'premium' && typeof redirectToCheckout !== 'undefined') {
+                        redirectToCheckout(user.email, user.id);
+                    } else {
+                        // Redirect to dashboard
+                        window.location.href = 'dashboard.html';
+                    }
                 } catch (error) {
                     alert(error.message || 'Signup failed. Please try again.');
                     submitBtn.disabled = false;

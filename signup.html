@@ -29,7 +29,27 @@
     <div class="auth-container">
         <div class="auth-card">
             <h1 class="auth-title">Start your free trial</h1>
-            <p class="auth-subtitle">7 days free, then $4.50/month</p>
+            <p class="auth-subtitle">Choose your plan</p>
+            
+            <div class="form-group">
+                <label>Select Plan:</label>
+                <div class="plan-selector">
+                    <label class="plan-option">
+                        <input type="radio" name="plan" value="free" checked>
+                        <div class="plan-option-content">
+                            <strong>Free</strong>
+                            <span>$0/month</span>
+                        </div>
+                    </label>
+                    <label class="plan-option">
+                        <input type="radio" name="plan" value="premium">
+                        <div class="plan-option-content">
+                            <strong>Premium</strong>
+                            <span>$4.50/month • 7-day free trial</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
             
             <form class="auth-form" id="signupForm">
                 <div class="form-group">
@@ -81,7 +101,9 @@
     </div>
 
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://js.stripe.com/v3/"></script>
     <script src="database.js"></script>
+    <script src="stripe.js"></script>
     <script src="auth.js"></script>
     <script src="navigation.js"></script>
 </body>

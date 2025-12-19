@@ -1430,6 +1430,75 @@ body {
     color: var(--text-secondary);
 }
 
+/* Plan Selector */
+.plan-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.plan-option {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--bg-primary);
+}
+
+.plan-option:hover {
+    border-color: var(--blue);
+    background: var(--bg-secondary);
+}
+
+.plan-option input[type="radio"] {
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.plan-option input[type="radio"]:checked + .plan-option-content {
+    color: var(--blue);
+}
+
+.plan-option-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.plan-option-content strong {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.plan-option-content span {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.plan-option input[type="radio"]:checked ~ .plan-option-content strong {
+    color: var(--blue);
+}
+
+.plan-option input[type="radio"]:checked ~ .plan-option-content {
+    color: var(--text-primary);
+}
+
+.plan-option:has(input[type="radio"]:checked),
+.plan-option input[type="radio"]:checked + .plan-option-content {
+    border-color: var(--blue);
+    background: var(--bg-secondary);
+}
+
+/* Fallback for browsers without :has() support */
+.plan-option input[type="radio"]:checked {
+    accent-color: var(--blue);
+}
+
 /* Page Header */
 .page-header {
     padding: 60px 20px 40px;

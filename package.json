@@ -1,0 +1,16 @@
+{
+  "name": "studier",
+  "version": "1.0.0",
+  "description": "Studier - Study app with Stripe integration",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "stripe": "^14.0.0"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
+

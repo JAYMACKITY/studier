@@ -82,8 +82,8 @@
                         <p><strong>Next Billing Date:</strong> <span id="nextBillingDate">N/A</span></p>
                     </div>
                     <div class="settings-actions">
-                        <button class="btn btn-secondary">Change Plan</button>
-                        <button class="btn btn-secondary">Cancel Subscription</button>
+                        <button id="upgradePlanBtn" class="btn btn-primary" style="display: none;">Upgrade to Premium</button>
+                        <button id="cancelSubscriptionBtn" class="btn btn-secondary" style="display: none;">Cancel Subscription</button>
                     </div>
                 </div>
             </div>
@@ -135,7 +135,9 @@
         </div>
     </footer>
 
+    <script src="https://js.stripe.com/v3/"></script>
     <script src="database.js"></script>
+    <script src="stripe.js"></script>
     <script src="navigation.js"></script>
     <script>
         // Load user data
@@ -164,6 +166,60 @@
                 } else {
                     document.getElementById('nextBillingDate').textContent = 'N/A';
                 }
+                
+                // Show/hide upgrade/cancel buttons
+                const upgradeBtn = document.getElementById('upgradePlanBtn');
+                const cancelBtn = document.getElementById('cancelSubscriptionBtn');
+                
+                if (plan === 'free' && upgradeBtn) {
+                    upgradeBtn.style.display = 'inline-block';
+                }
+                if (plan === 'premium' && cancelBtn) {
+                    cancelBtn.style.display = 'inline-block';
+                }
+            }
+            
+            // Upgrade button handler
+            const upgradeBtn = document.getElementById('upgradePlanBtn');
+            if (upgradeBtn) {
+                upgradeBtn.addEventListener('click', function() {
+                    const user = getCurrentUser();
+                    if (user && typeof redirectToCheckout !== 'undefined') {
+                        redirectToCheckout(user.email, user.id);
+                    } else {
+                        window.location.href = 'pricing.html';
+                    }
+                });
+            }
+            
+            // Cancel subscription button handler
+            const cancelBtn = document.getElementById('cancelSubscriptionBtn');
+            if (cancelBtn) {
+                cancelBtn.addEventListener('click', async function() {
+                    if (confirm('Are you sure you want to cancel your subscription? You will lose access to premium features at the end of your billing period.')) {
+                        const user = getCurrentUser();
+                        if (user && typeof cancelSubscription !== 'undefined') {
+                            try {
+                                await cancelSubscription(user.id);
+                                alert('Subscription cancelled successfully. You will retain access until the end of your billing period.');
+                                location.reload();
+                            } catch (error) {
+                                alert('Error cancelling subscription. Please contact support at hello@studier.me');
+                            }
+                        } else {
+                            // Fallback: Update locally
+                            if (user) {
+                                updateUser(user.id, { plan: 'free' });
+                                localStorage.setItem('studier_user', JSON.stringify({
+                                    ...user,
+                                    plan: 'free'
+                                }));
+                                alert('Subscription cancelled. Please contact support at hello@studier.me to complete the cancellation.');
+                                location.reload();
+                            }
+                        }
+                    }
+                });
             }
             
             // Theme toggle
